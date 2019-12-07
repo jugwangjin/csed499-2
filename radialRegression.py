@@ -290,18 +290,18 @@ for epoch in range(epochs):
         valid_num = valid_num + 1
 
 	if epoch == 0:
-      best_validation_loss = valid_loss/valid_num
+    	best_validation_loss = valid_loss/valid_num
     elif valid_loss/valid_num < best_validation_loss:
-      if n > p//2: # if print every update, it makes too many prints
-        print(f'Saving model, with validation loss ({best_validation_loss:.6f} --> {valid_loss/valid_num:.6f}).')
-      torch.save(regression.state_dict(), os.path.join(MODEL_DIR, 'fMin'+str(fMin)+'fMax'+str(fMax)+'checkpoint.pt'))
-      n = 0
-      best_validation_loss = valid_loss/valid_num
+    	if n > p//2: # if print every update, it makes too many prints
+       		print(f'Saving model, with validation loss ({best_validation_loss:.6f} --> {valid_loss/valid_num:.6f}).')
+      	torch.save(regression.state_dict(), os.path.join(MODEL_DIR, 'fMin'+str(fMin)+'fMax'+str(fMax)+'checkpoint.pt'))
+      	n = 0
+      	best_validation_loss = valid_loss/valid_num
     else:
-      n = n + 1
+      	n = n + 1
     if n > p:
-      print(f'Stopping training on epoch {epoch:d}')
-      break
+      	print(f'Stopping training on epoch {epoch:d}')
+      	break
 
 regression.load_state_dict(torch.load(os.path.join(MODEL_DIR, 'fMin'+str(fMin)+'fMax'+str(fMax)+'checkpoint.pt')))
 regression.eval()
