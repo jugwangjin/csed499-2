@@ -69,9 +69,9 @@ image_shape = [224, 224, 3]
 
 fMin = 0.1
 fMax = 1
-
+print("start getting dataset")
 data, labels = get_dataset(image_shape, fMin, fMax)
-
+print("end getting dataset")
 c = list(zip(data, labels))
 random.shuffle(c)
 data, labels = zip(*c)
@@ -121,7 +121,7 @@ import torch.utils.model_zoo as model_zoo
 
 pretrained_settings = {
 	"cifar100": {
-		'resnet20': 'https://github.com/chenyaofo/CIFAR-pretrained-models/releases/download/resnet/cifar100-resnet56-2f147f26.pth',
+		'resnet20': 'https://github.com/chenyaofo/CIFAR-pretrained-models/releases/download/resnet/cifar10-resnet32-e96f90cf.pth',
 		'num_classes': 100
 	}
 }
@@ -231,12 +231,12 @@ def resnet_model():
 
 
 ###############
-
+print("Start learning")
 lossFunction = torch.nn.MSELoss() # TODO : change loss to mse 
-epochs = 500
+epochs = 400
 lr = 0.0001
 batch_size = 128
-display_step = 50
+display_step = 5
 img_shape = (3, 224, 224)
 # Initialize generator and discriminator
 regression = resnet_model()
