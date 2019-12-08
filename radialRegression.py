@@ -33,7 +33,7 @@ def make_dataset(image_shape, fMin, fMax):
 	center = [math.floor(x/2) for x in image_shape]
 	for (path, dir, files) in os.walk(DATA_DIR): 
 		for (path_, dir_, files_) in os.walk(ORIGINAL_DATA_DIR):
-			if len(files) < len(files_):
+			if len(files) < len(files_)+100:
 				for filename in files_ :
 					ext = os.path.splitext(filename)[-1]
 					if ext == '.jpg':
