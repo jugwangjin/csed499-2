@@ -33,7 +33,7 @@ def make_dataset(image_shape, fMin, fMax):
 	center = [math.floor(x/2) for x in image_shape]
 	for (path, dir, files) in os.walk(DATA_DIR): 
 		for (path_, dir_, files_) in os.walk(ORIGINAL_DATA_DIR):
-			if len(files) < len(files_)+100:
+			if len(files)+1000 < len(files_):
 				for filename in files_ :
 					ext = os.path.splitext(filename)[-1]
 					if ext == '.jpg':
@@ -121,7 +121,7 @@ import torch.utils.model_zoo as model_zoo
 
 pretrained_settings = {
 	"cifar100": {
-		'resnet20': 'https://github.com/chenyaofo/CIFAR-pretrained-models/releases/download/resnet/cifar10-resnet32-e96f90cf.pth',
+		'resnet20': 'https://github.com/chenyaofo/CIFAR-pretrained-models/releases/download/resnet/cifar10-resnet20-30abc31d.pth',
 		'num_classes': 100
 	}
 }
